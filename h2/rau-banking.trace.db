@@ -1,0 +1,3 @@
+2025-05-22 13:58:53.314398-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "RANSACAO" not found; SQL statement:
+SELECT * FROM RANSACAO [42102-232]
