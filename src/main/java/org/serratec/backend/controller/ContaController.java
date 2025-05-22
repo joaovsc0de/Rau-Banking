@@ -20,7 +20,7 @@ public class ContaController {
 
     @PostMapping("/inserir")
     @ResponseStatus(HttpStatus.CREATED)
-    public Conta inserir(@RequestBody Conta conta) {
+    public Conta inserir(@Valid @RequestBody Conta conta) {
         return service.inserir(conta);
     }
 
@@ -45,11 +45,8 @@ public class ContaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Conta> remover(@Valid @PathVariable Long id){
-        Optional<Conta> contaOp = service.findByID(id);
-        if(contaOp.isPresent()){
-            service.deletarPorId(id);
+        service.deletarPorId(id);
             return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+
     }
 }

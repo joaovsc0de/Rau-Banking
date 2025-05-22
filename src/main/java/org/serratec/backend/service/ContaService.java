@@ -18,7 +18,9 @@ public class ContaService {
 
     public void deletarPorId(Long id) {
         if (repository.existsById(id)) {
-            repository.deleteById(id);
+            Optional<Conta> contaOp = repository.findById(id);
+            contaOp.get().setAtivo(false);
+            repository.save(contaOp.get());
         } else {
             throw new RuntimeException("Conta com ID " + id + " não encontrada");
         }
