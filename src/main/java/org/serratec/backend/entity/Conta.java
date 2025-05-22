@@ -1,14 +1,13 @@
 package org.serratec.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.math.BigDecimal;
-import java.util.List;
+
 
 @Entity
 public class Conta {
@@ -29,6 +28,17 @@ public class Conta {
 
     @NotNull
     private BigDecimal saldo;
+
+    @JsonIgnore
+    private boolean ativo = true;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public Long getId() {
         return id;
