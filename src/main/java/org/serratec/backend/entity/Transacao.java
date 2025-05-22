@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
+import org.hibernate.annotations.CurrentTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class Transacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @CurrentTimestamp
     private LocalDateTime dataHora;
 
     @Positive(message = "O valor inserido tem que ser maior que zero.")
@@ -68,8 +70,4 @@ public class Transacao {
         this.valor = valor;
     }
 
-    @PrePersist
-    public void prePersist () {
-        this.dataHora = LocalDateTime.now();
-    }
 }
