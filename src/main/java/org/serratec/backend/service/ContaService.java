@@ -22,7 +22,7 @@ public class ContaService {
             contaOp.get().setAtivo(false);
             repository.save(contaOp.get());
         } else {
-            throw new RuntimeException("Conta com ID " + id + " não encontrada");
+            throw new ContaException("Conta com ID " + id + " não encontrada");
         }
     }
     public Optional<Conta> findByID(Long id) {
